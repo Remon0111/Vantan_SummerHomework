@@ -5,6 +5,8 @@ from tkinter import ttk
 # 下の文でplaysoundをインポート
 from playsound import playsound
 
+
+# 曲を流す処理
 def play_music():
     with playsound(r"/Users/hashimotoren/Desktop/likemusic/FujiiKaze-Garden.mp3"):
         pass
@@ -26,16 +28,26 @@ randomButton.pack(side = LEFT)
 secondWindow = Toplevel()
 secondWindow.title("新しい曲を追加")
 
-musicAlbumNameLabel = ttk.Label(secondWindow, text = "追加したい曲のアルバム写真の名前を追加してください")
-musicAlbumNameEnetry = ttk.Entry(secondWindow)
+# musicAlbumNameLabel = ttk.Label(secondWindow, text = "追加したい曲のアルバム写真の名前を追加してください")
+# musicAlbumNameEntry = ttk.Entry(secondWindow)
 musicNameLabel = ttk.Label(secondWindow, text = "追加したい曲名を記入してください")
-musicNameEnetry = ttk.Entry(secondWindow)
-newMusicButton = ttk.Button(secondWindow, text = "曲を追加する")
+musicNameEntry = ttk.Entry(secondWindow)
+musicComposerLabel = ttk.Label(secondWindow, text = "追加したい曲の作曲者名を記入してください")
+musicComposerEntry = ttk.Entry(secondWindow)
+musicPathLabel = ttk.Label(secondWindow, text = "追加したい曲のpathを記入してください")
+musicPathEntry = ttk.Entry(secondWindow)
 
-musicAlbumNameLabel.pack()
-musicAlbumNameEnetry.pack()
+# musicAlbumNameLabel.pack()
+# musicAlbumNameEntry.pack()
 musicNameLabel.pack()
-musicNameEnetry.pack()
+musicNameEntry.pack()
+musicComposerLabel.pack()
+musicComposerEntry.pack()
+musicPathLabel.pack()
+musicPathEntry.pack()
+
+# 下の文は曲を追加するボタンの処理です
+newMusicButton = ttk.Button(secondWindow, text = "曲を追加する", command = playMusic)
 newMusicButton.pack()
 
 window.mainloop()
