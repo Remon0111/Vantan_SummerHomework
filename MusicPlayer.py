@@ -4,6 +4,22 @@ from tkinter import *
 from tkinter import ttk
 # 下の文でplaysoundをインポート
 from playsound import playsound
+# 下の文でsqlite3をインポート
+import sqlite3
+
+# データーベースに接続
+music = sqlite3.connect("musiclist.db")
+# データーベースのカーソルを取得
+cursor = music.cursor()
+
+# テーブルの作成
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS music(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        musicName TEXT NOT NULL,
+        musicComposer TEXT NOT NULL,
+        musicPath TEXT NOT NULL
+)""")
 
 
 # 曲を流す処理
@@ -45,6 +61,20 @@ musicComposerLabel.pack()
 musicComposerEntry.pack()
 musicPathLabel.pack()
 musicPathEntry.pack()
+
+def playMusic():
+    global MusicName
+    global MusicComposer
+    global MusicPath
+    MusicName = musicNameEntry.get()
+    MusicComposer = musicComposerEntry.get()
+    MusicPath = musicPathEntry.get()
+
+    list = "INSERT INTO music(musicName, musicComposer, musicPath) VALUES (?, ?, ?)"
+    cursor.execute(list, (MusicName, MusicComposer, MusicPath))
+
+    music.commit()
+
 
 # 下の文は曲を追加するボタンの処理です
 newMusicButton = ttk.Button(secondWindow, text = "曲を追加する", command = playMusic)
