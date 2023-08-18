@@ -1,11 +1,9 @@
-# 下の文でtkinterをpythonファイルにインポート
 from tkinter import *
-# 下の文でtkinterの拡張系であるttkをインポート
 from tkinter import ttk
-# 下の文でplaysoundをインポート
-from playsound import playsound
-# 下の文でsqlite3をインポート
 import sqlite3
+import sys
+sys.path.append('/opt/homebrew/lib/python3.11/site-packages')
+from playsound import playsound
 
 # データーベースに接続
 music = sqlite3.connect("musiclist.db")
