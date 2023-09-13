@@ -5,7 +5,6 @@ import sys
 sys.path.append('/opt/homebrew/lib/python3.11/site-packages')
 import random
 import threading
-from PIL import Image, ImageTk
 from pydub import AudioSegment
 from pydub.playback import play
 import threading
@@ -15,17 +14,6 @@ window = Tk()
 window.geometry("500x700+450+100")
 window.title("音楽プレイヤー")
 
-# window.wm_attributes("-transparent", True)
-# window.configure(bg="systemTransparent")
-
-# fn = "summerWorkBackground.png"
-# img = Image.open(fn)
-# img = img.resize((500,500))
-# background = ttk.PhotoImage(file="summerWorkBackground.png")
-# bg = ttk.Label(window, image=background)
-# bg.grid(column=0, row=0, sticky=ttk.W)
-
-# bg="systemTransparent"
 mainMusicLabel = ttk.Label(window, text="RemonMusic!", font=("MSゴシック", "35", "bold"))
 mainMusicLabel.grid(column=0, row=0, columnspan=4, ipadx=150, sticky=ttk.NW)
 
